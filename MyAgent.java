@@ -4,6 +4,10 @@ public class MyAgent extends Agent
 {
     Random r;
 
+    private static final int BLANK = 0;
+    private static final int RED = 1;
+    private static final int YELLOW = 2;
+
     /**
      * Constructs a new agent, giving it the game and telling it whether it is Red or Yellow.
      * 
@@ -35,10 +39,147 @@ public class MyAgent extends Agent
      * If an invalid move is made, the game engine will announce it and the game will be ended.
      * 
      */
-    public void move()
-    {
 
+    /*
+     * Strategy:
+     * If we can win, move on that column.
+     * If the opponent can win, block that column.
+     * Otherwise, move randomly.
+     */
+    public void move() {
+        int myColor = iAmRed ? RED : YELLOW;
+        int oppColor = iAmRed ? YELLOW : RED;
+
+        int myWinningColumn = winningColumn(myColor);
+        int oppWinningColumn = winningColumn(oppColor);
+        if (myWinningColumn > -1)
+            moveOnColumn(myWinningColumn);
+        else if (oppWinningColumn > -1)
+            moveOnColumn(oppWinningColumn);
+        else
+            moveOnColumn(randomMove());
     }
+
+    /*
+     * @returns [int]: Integer corresponding to the follow of the slot, as
+     *                 defined in the class constants.
+     */
+    private int getSlotValue(Connect4Slot slot) {
+        if (slot.getIsFilled()) {
+            if (slot.getIsRed())
+                return RED;
+            return YELLOW;
+        }
+        return BLANK;
+    }
+
+    private Connect4Slot getSlotAt(int colIdx, int slotIdx) {
+        return myGame.getColumn(colIdx).getSlot(slotIdx);
+    }
+
+    private boolean isValidMove(int colIdx, int slotIdx) {
+        return getLowestEmptyIndex(myGame.getColumn(colIdx)) == slotIdx;
+    }
+
+    /*
+     * @returns [int]: The index of the slot (0 for s1, 1 for s2, etc.) where
+     *                 the winning move is made, or -1 if there is no winning
+     *                 move.
+     */
+    private int oneAway(Connect4Slot s1, Connect4Slot s2, Connect4Slot s3,
+                            Connect4Slot s4, int color) {
+        int colorCount = 0;
+        int blankCount = 0;
+        int blankIdx = -1;
+        Connect4Slot[] slots = {s1, s2, s3, s4};
+        for (int i = 0; i < slots.length; i++) {
+            Connect4Slot slot = slots[i];
+            if (getSlotValue(slot) == color)
+                colorCount += 1;
+            else if (getSlotValue(slot) == BLANK) {
+                blankIdx = i;
+                blankCount += 1;
+            }
+        }
+        if (colorCount == 3 && blankCount == 1)
+            return blankIdx;
+        return -1;
+    }
+
+    /*
+     * Returns the winning column index for the @color player or -1 if that
+     * player can't win.
+     * @param color [int]: The color of the player, as defined by the class
+     *                     constants (1 for RED, 2 for YELLOW).
+     */
+    private int winningColumn(int color) {
+        for (int i = 0; i < myGame.getColumnCount(); i++) {
+            for (int j = 0; j < myGame.getRowCount(); j++) {
+                // Vertical
+                if (j + 3 < myGame.getRowCount()) {
+                    if (isValidMove(i, j) || isValidMove(i, j+1) ||
+                        isValidMove(i, j+2) || isValidMove(i, j+3)) {
+                        int winningIdx = oneAway(getSlotAt(i, j),
+                                                 getSlotAt(i, j+1),
+                                                 getSlotAt(i, j+2),
+                                                 getSlotAt(i, j+3),
+                                                 color);
+                        if (winningIdx > -1) {
+                            System.out.println("V: Winning move for " + color + " at col " + i);
+                            return i;
+                        }
+                    }
+                }
+                // Horizontal
+                if (i + 3 < myGame.getColumnCount()) {
+                    if (isValidMove(i, j) || isValidMove(i+1, j) ||
+                        isValidMove(i+2, j) || isValidMove(i+3, j)) {
+                        int winningIdx = oneAway(getSlotAt(i, j),
+                                                 getSlotAt(i+1, j),
+                                                 getSlotAt(i+2, j),
+                                                 getSlotAt(i+3, j),
+                                                 color);
+                        if (winningIdx > -1) {
+                            System.out.println("H: Winning move for " + color + " at col " + (i + winningIdx));
+                            return i + winningIdx;
+                        }
+                    }
+                }
+                // Diagonals
+                if (i + 3 < myGame.getColumnCount()
+                    && j + 3 < myGame.getRowCount()) {
+                    if (isValidMove(i, j) || isValidMove(i+1, j+1) ||
+                        isValidMove(i+2, j+2) || isValidMove(i+3, j+3)) {
+                        int winningIdx = oneAway(getSlotAt(i, j),
+                                                 getSlotAt(i+1, j+1),
+                                                 getSlotAt(i+2, j+2),
+                                                 getSlotAt(i+3, j+3),
+                                                 color);
+                        if (winningIdx > -1) {
+                            System.out.println("D1: Winning move for " + color + " at col " + (i + winningIdx));
+                            return i + winningIdx;
+                        }
+                    }
+                }
+                if (i > 2 && j + 3 < myGame.getRowCount()) {
+                    if (isValidMove(i, j) || isValidMove(i-1, j+1) ||
+                        isValidMove(i-2, j+2) || isValidMove(i-3, j+3)) {
+                        int winningIdx = oneAway(getSlotAt(i, j),
+                                                 getSlotAt(i-1, j+1),
+                                                 getSlotAt(i-2, j+2),
+                                                 getSlotAt(i-3, j+3),
+                                                 color);
+                        if (winningIdx > -1) {
+                            System.out.println("D2: Winning move for " + color + " at col " + (i - winningIdx));
+                            return i - winningIdx;
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
 
     /**
      * Drops a token into a particular column so that it will fall to the bottom of the column.
