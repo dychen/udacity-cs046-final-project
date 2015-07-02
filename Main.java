@@ -9,9 +9,8 @@ public class Main
     public static void main(String[] args)
     {
         Connect4Game game = new Connect4Game(7, 6); // create the game; these sizes can be altered for larger or smaller games
-        //Agent redPlayer = new RandomAgent(game, true); // create the red player, any subclass of Agent
         Agent redPlayer = new MyAgent(game, true); // create the red player, any subclass of Agent
-        Agent yellowPlayer = new AdvancedAgent(game, false); // create the yellow player, any subclass of Agent
+        Agent yellowPlayer = new BrilliantAgent(game, false); // create the yellow player, any subclass of Agent
         
         Connect4Frame mainframe = new Connect4Frame(game, redPlayer, yellowPlayer); // create the game window
     }
