@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=game
+comment0.target=Connect4Panel(Connect4Game)
+comment0.text=\n\ Creates\ a\ new\ Connect4Panel\ with\ a\ given\ game.\n\ \n\ Your\ agent\ will\ not\ need\ to\ use\ this\ method.\n\ \n\ @param\ game\ the\ game\ to\ display.\n
+comment1.params=g
+comment1.target=void\ paint(java.awt.Graphics)
+comment1.text=\n\ Paints\ the\ current\ status\ of\ the\ game.\n\ \n\ Your\ agent\ will\ not\ need\ to\ use\ this\ method.\n\ \n\ @param\ g\ the\ graphics\ object\ with\ which\ to\ paint.\n
+comment2.params=g2\ x\ y\ color
+comment2.target=void\ drawSlot(java.awt.Graphics2D,\ int,\ int,\ java.awt.Color)
+comment2.text=\n\ Draw\ a\ single\ slot.\n\ \n\ Your\ agent\ will\ not\ need\ to\ use\ this\ method.\n\n\ @param\ g2\ the\ graphics\ object\ with\ which\ to\ paint.\n\ @param\ x\ the\ top-left\ x-coordinate\ where\ to\ draw\ the\ slot.\n\ @param\ y\ the\ top-left\ y-coordinate\ where\ to\ draw\ the\ slot.\n\ @param\ color\ the\ color\ for\ the\ slot.\n
+comment3.params=g2\ x\ y
+comment3.target=void\ drawHighlight(java.awt.Graphics2D,\ int,\ int)
+comment3.text=\n\ Highlight\ a\ slot.\n\ \n\ Your\ agent\ will\ not\ need\ to\ use\ this\ method.\n\n\ @param\ g2\ the\ graphics\ object\ with\ which\ to\ paint.\n\ @param\ x\ the\ top-left\ x-coordinate\ where\ to\ draw\ the\ highlight.\n\ @param\ y\ the\ top-left\ y-coordinate\ where\ to\ draw\ the\ highlight.\n
+numComments=4

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=game\ iAmRed
+comment0.target=Agent(Connect4Game,\ boolean)
+comment0.text=\n\ Constructs\ a\ new\ agent.\n\ \n\ You\ MAY\ override\ this\ method\ in\ your\ agent.\ If\ you\ do,\ make\ sure\ to\ call...\n\ \ super(game,\ iAmRed);\n\ ...before\ constructing\ any\ other\ initial\ information.\n\ \n\ @param\ game\ the\ game\ for\ the\ agent\ to\ play.\n\ @param\ iAmRed\ whether\ the\ agent\ is\ the\ red\ player.\n
+comment1.params=
+comment1.target=void\ move()
+comment1.text=\n\ Make\ a\ move\ in\ the\ game.\ At\ the\ beginning\ of\ this\ method,\ the\ myGame\ object\ will\ be\n\ ready\ for\ a\ move.\ After\ this\ method\ has\ run,\ exactly\ one\ piece\ should\ be\ added\ to\ the\n\ game\ board\ with\ no\ other\ changes\ made.\n\ \n\ You\ MUST\ override\ this\ method\ in\ your\ agent.\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment2.text=\n\ A\ name\ for\ the\ agent.\n\ \n\ You\ MUST\ override\ this\ method\ in\ your\ agent.\n\ \n\ @return\ the\ agent's\ name.\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\n\ The\ way\ the\ agent's\ name\ is\ displayed\ in\ the\ game,\ with\ its\ color.\n\ \n\ You\ should\ not\ need\ to\ modify\ this\ method.\n\n\ @return\ the\ agent's\ name\ to\ display\ in\ the\ game.\n
+numComments=4

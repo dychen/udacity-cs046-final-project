@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=game\ iAmRed
+comment0.target=MyAgent(Connect4Game,\ boolean)
+comment0.text=\n\ Constructs\ a\ new\ agent,\ giving\ it\ the\ game\ and\ telling\ it\ whether\ it\ is\ Red\ or\ Yellow.\n\ \n\ @param\ game\ The\ game\ the\ agent\ will\ be\ playing.\n\ @param\ iAmRed\ True\ if\ the\ agent\ is\ Red,\ False\ if\ the\ agent\ is\ Yellow.\n
+comment1.params=
+comment1.target=void\ move()
+comment1.text=\n\ The\ move\ method\ is\ run\ every\ time\ it\ is\ this\ agent's\ turn\ in\ the\ game.\ You\ may\ assume\ that\n\ when\ move()\ is\ called,\ the\ game\ has\ at\ least\ one\ open\ slot\ for\ a\ token,\ and\ the\ game\ has\ not\n\ already\ been\ won.\n\ \n\ By\ the\ end\ of\ the\ move\ method,\ the\ agent\ should\ have\ placed\ one\ token\ into\ the\ game\ at\ some\n\ point.\n\ \n\ After\ the\ move()\ method\ is\ called,\ the\ game\ engine\ will\ check\ to\ make\ sure\ the\ move\ was\n\ valid.\ A\ move\ might\ be\ invalid\ if\:\n\ -\ No\ token\ was\ place\ into\ the\ game.\n\ -\ More\ than\ one\ token\ was\ placed\ into\ the\ game.\n\ -\ A\ previous\ token\ was\ removed\ from\ the\ game.\n\ -\ The\ color\ of\ a\ previous\ token\ was\ changed.\n\ -\ There\ are\ empty\ spaces\ below\ where\ the\ token\ was\ placed.\n\ \n\ If\ an\ invalid\ move\ is\ made,\ the\ game\ engine\ will\ announce\ it\ and\ the\ game\ will\ be\ ended.\n\ \n
+comment2.params=columnNumber
+comment2.target=void\ moveOnColumn(int)
+comment2.text=\n\ Drops\ a\ token\ into\ a\ particular\ column\ so\ that\ it\ will\ fall\ to\ the\ bottom\ of\ the\ column.\n\ If\ the\ column\ is\ already\ full,\ nothing\ will\ change.\n\ \n\ @param\ columnNumber\ The\ column\ into\ which\ to\ drop\ the\ token.\n
+comment3.params=column
+comment3.target=int\ getLowestEmptyIndex(Connect4Column)
+comment3.text=\n\ Returns\ the\ index\ of\ the\ top\ empty\ slot\ in\ a\ particular\ column.\n\ \n\ @param\ column\ The\ column\ to\ check.\n\ @return\ the\ index\ of\ the\ top\ empty\ slot\ in\ a\ particular\ column;\ -1\ if\ the\ column\ is\ already\ full.\n
+comment4.params=
+comment4.target=int\ randomMove()
+comment4.text=\n\ Returns\ a\ random\ valid\ move.\ If\ your\ agent\ doesn't\ know\ what\ to\ do,\ making\ a\ random\ move\n\ can\ allow\ the\ game\ to\ go\ on\ anyway.\n\ \n\ @return\ a\ random\ valid\ move.\n
+comment5.params=
+comment5.target=int\ iCanWin()
+comment5.text=\n\ Returns\ the\ column\ that\ would\ allow\ the\ agent\ to\ win.\n\ \n\ You\ might\ want\ your\ agent\ to\ check\ to\ see\ if\ it\ has\ a\ winning\ move\ available\ to\ it\ so\ that\n\ it\ can\ go\ ahead\ and\ make\ that\ move.\ Implement\ this\ method\ to\ return\ what\ column\ would\n\ allow\ the\ agent\ to\ win.\n\n\ @return\ the\ column\ that\ would\ allow\ the\ agent\ to\ win.\n
+comment6.params=
+comment6.target=int\ theyCanWin()
+comment6.text=\n\ Returns\ the\ column\ that\ would\ allow\ the\ opponent\ to\ win.\n\ \n\ You\ might\ want\ your\ agent\ to\ check\ to\ see\ if\ the\ opponent\ would\ have\ any\ winning\ moves\n\ available\ so\ your\ agent\ can\ block\ them.\ Implement\ this\ method\ to\ return\ what\ column\ should\n\ be\ blocked\ to\ prevent\ the\ opponent\ from\ winning.\n\n\ @return\ the\ column\ that\ would\ allow\ the\ opponent\ to\ win.\n
+comment7.params=
+comment7.target=java.lang.String\ getName()
+comment7.text=\n\ Returns\ the\ name\ of\ this\ agent.\n\n\ @return\ the\ agent's\ name\n
+numComments=8
